@@ -157,10 +157,8 @@ const submitGuess = () => {
                   class="w-4 h-4 rounded-full m-1 bg-green-500"
                 ></div>
               </template>
-              <template v-for="(value, i) in selectedValue">
+              <template v-for="(value, i) in randomValues.filter((v, idx) => v !== selectedValue[idx] && selectedValue.includes(v))">
                 <div
-                  v-if="value !== null && value !== randomValues[i] && randomValues.includes(value)"
-                  :key="'amber-' + i"
                   class="w-4 h-4 rounded-full m-1 bg-amber-500"
                 ></div>
               </template>
