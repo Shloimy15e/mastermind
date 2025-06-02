@@ -29,7 +29,7 @@ const generateValues = () => {
   round.value = 0
   message.value = null
   showMessage.value = false
-  title.value = null
+  title.value = undefined
   type.value = 'info'
 }
 
@@ -38,12 +38,12 @@ const round = ref(0)
 
 const message = ref<string | null>(null)
 const showMessage = ref(false)
-const title = ref<string | null>(null)
+const title = ref<string | undefined>(undefined)
 const type = ref<'info' | 'success' | 'error'>('info')
 
 const submitGuess = () => {
   // If there are no more rounds, return. if the guesses were all perfect, alert the user.
-  if (round.value >= 9 && selectedValues.value[round.value] !== randomValues.value) {
+  if (round.value >= 9 && selectedValues.value[round.value] !== randomValues?.value) {
     message.value = 'You have no more attempts left!'
     showMessage.value = true
     title.value = 'Game Over'
@@ -63,11 +63,11 @@ const submitGuess = () => {
   type.value = 'error'
   // Calculate feedback: perfect (right color, right place), correct (right color, wrong place), wrong
   let perfect = selectedValues.value[round.value].filter(
-    (value, index) => value === randomValues.value[index],
+    (value, index) => randomValues.value && value === randomValues.value[index],
   ).length
   let correct =
     selectedValues.value[round.value].filter(
-      (value) => value !== null && randomValues.value.includes(value),
+      (value) => value !== null && randomValues?.value?.includes(value),
     ).length - perfect
 
   const wrong = 4 - perfect - correct
@@ -95,14 +95,6 @@ const submitGuess = () => {
         Generate
       </button>
       <p>Try to guess the combination in the game!</p>
-      <!-- temp cheat -->
-      <div v-if="randomValues" class="text-sm text-gray-500">
-        <p>Random Values: {{ randomValues.map((v) => colorMap[v]).join(', ') }}</p>
-        <p>
-          Selected guesses:
-          {{ selectedValues[round].map((v) => (v ? colorMap[v] : null)).join(', ') }}
-        </p>
-      </div>
     </div>
     <!-- Game -->
     <div
@@ -124,7 +116,7 @@ const submitGuess = () => {
         >
           <ListboxLabel class="text-lg font-semibold">#{{ index + 1 }}</ListboxLabel>
           <ListboxButton
-            ><div class="w-10 h-10 border rounded-md p-2" :class="`bg-${colorMap[value]}`"></div
+            ><div class="w-10 h-10 border rounded-md p-2" :class="`bg-${value !== null ? colorMap[value] : 'gray-300'}`"></div
           ></ListboxButton>
           <ListboxOptions class="bg-white border rounded-md absolute p-1 flex flex-col gap-1">
             <ListboxOption
@@ -132,7 +124,7 @@ const submitGuess = () => {
               :key="index"
               :value="Number(color)"
               class="p-2 cursor-pointer w-10 h-10 rounded-md shadow-md"
-              :class="`bg-${colorMap[color]}`"
+              :class="`bg-${colorMap[Number(color)]}`"
             >
             </ListboxOption>
           </ListboxOptions>
