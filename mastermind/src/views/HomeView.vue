@@ -19,7 +19,7 @@ const colorMap: Record<number, string> = {
   5: 'yellow-500',
 }
 
-const randomValues = ref<number[] | null>(null)
+const randomValues = ref<(number | null)[] | null>(null)
 
 const generateValues = () => {
   randomValues.value = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6))
@@ -40,6 +40,9 @@ const message = ref<string | null>(null)
 const showMessage = ref(false)
 const title = ref<string | undefined>(undefined)
 const type = ref<'info' | 'success' | 'error'>('info')
+
+const perfect = ref<number[]>([0])
+const correct = ref<number[]>([0])
 
 const submitGuess = () => {
   // If there are no more rounds, return. if the guesses were all perfect, alert the user.
@@ -62,21 +65,39 @@ const submitGuess = () => {
   title.value = 'Incorrect Guess'
   type.value = 'error'
   // Calculate feedback: perfect (right color, right place), correct (right color, wrong place), wrong
-  let perfect = selectedValues.value[round.value].filter(
-    (value, index) => randomValues.value && value === randomValues.value[index],
-  ).length
-  let correct =
-    selectedValues.value[round.value].filter(
-      (value) => value !== null && randomValues?.value?.includes(value),
-    ).length - perfect
+  let guess = [...selectedValues.value[round.value]]
+  let answerCopy = [...randomValues.value || []]
+  guess.forEach((value, i) => {
+    if (value !== null && answerCopy[i] !== null && value === answerCopy[i]) {
+      if (!perfect.value[round.value]) {
+        perfect.value[round.value] = 0
+      }
+      perfect.value[round.value]++
+      guess[i] = null // Mark as counted
+      // Remove the value from randomValues to avoid counting it again
+      answerCopy[i] = null
+    }
+    return
+  })
 
-  const wrong = 4 - perfect - correct
+  // Count correct guesses (right color, wrong place)
+  guess.forEach((value, i) => {
+    if (value !== null && answerCopy !== null && answerCopy.includes(value)) {
+      if (!correct.value[round.value]) {
+        correct.value[round.value] = 0
+      }
+      correct.value[round.value]++
+    }
+  })
 
-  message.value = `Round ${round.value} started. Perfect: ${perfect}, Correct: ${correct}, Wrong: ${wrong}. You have ${10 - round.value} attempts left.`
+  const wrong = 4 - perfect.value[round.value] - correct.value[round.value]
+
+  message.value = `Round ${round.value} started. Perfect: ${perfect.value[round.value]}, Correct: ${correct.value[round.value]}, Wrong: ${wrong}. You have ${10 - round.value} attempts left.`
   showMessage.value = true
   round.value++
   // Add a new empty guess for the next round
   selectedValues.value.push([null, null, null, null])
+  console.log('Perfect:', perfect.value[round.value - 1], 'Correct:', correct.value[round.value - 1])
 }
 </script>
 
@@ -116,7 +137,10 @@ const submitGuess = () => {
         >
           <ListboxLabel class="text-lg font-semibold">#{{ index + 1 }}</ListboxLabel>
           <ListboxButton
-            ><div class="w-10 h-10 border rounded-md p-2" :class="`bg-${value !== null ? colorMap[value] : 'gray-300'}`"></div
+            ><div
+              class="w-10 h-10 border rounded-md p-2"
+              :class="`bg-${value !== null ? colorMap[value] : 'gray-300'}`"
+            ></div
           ></ListboxButton>
           <ListboxOptions class="bg-white border rounded-md absolute p-1 flex flex-col gap-1">
             <ListboxOption
@@ -140,19 +164,11 @@ const submitGuess = () => {
         <div v-if="index !== round" class="flex items-center justify-center">
           <div class="flex">
             <template v-if="selectedValue && randomValues">
-              <template v-for="n in 4">
-                <div
-                  v-if="
-                    selectedValue[n - 1] !== null && selectedValue[n - 1] === randomValues[n - 1]
-                  "
-                  :key="'green-' + n"
-                  class="w-4 h-4 rounded-full m-1 bg-green-500"
-                ></div>
+              <template v-for="n in perfect[index]">
+                <div class="w-4 h-4 rounded-full m-1 bg-green-500"></div>
               </template>
-              <template v-for="(value, i) in randomValues.filter((v, idx) => v !== selectedValue[idx] && selectedValue.includes(v))">
-                <div
-                  class="w-4 h-4 rounded-full m-1 bg-amber-500"
-                ></div>
+              <template v-for="n in correct[index]">
+                <div class="w-4 h-4 rounded-full m-1 bg-amber-500"></div>
               </template>
             </template>
           </div>
