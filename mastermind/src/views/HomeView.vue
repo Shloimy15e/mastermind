@@ -23,7 +23,7 @@ const randomValues = ref<(number | null)[] | null>(null)
 
 const generateValues = () => {
   randomValues.value = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6))
-  console.log('Generated random values:', randomValues.value.map((v) => colorMap[v]).join(', '))
+  console.log('Generated random values:', randomValues.value.map((v) => v ? colorMap[v] : null).join(', '))
   // Reset the selected values for the new round
   selectedValues.value = [[null, null, null, null]]
   round.value = 0
