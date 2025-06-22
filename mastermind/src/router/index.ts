@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/mastermind',
+      name: 'mastermind',
+      component: () => import('../views/MastermindGame.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

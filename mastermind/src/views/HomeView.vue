@@ -1,205 +1,170 @@
-<script setup lang="ts">
-import Message from '@/components/Message.vue'
-import {
-  Listbox,
-  ListboxLabel,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-} from '@headlessui/vue'
-import { IconCheck } from '@tabler/icons-vue'
-import { ref } from 'vue'
-// Number to color map
-const colorMap: Record<number, string> = {
-  0: 'black',
-  1: 'white',
-  2: 'red-500',
-  3: 'green-500',
-  4: 'blue-500',
-  5: 'yellow-500',
-}
-
-const randomValues = ref<(number | null)[] | null>(null)
-
-const generateValues = () => {
-  randomValues.value = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6))
-  console.log('Generated random values:', randomValues.value.map((v) => v ? colorMap[v] : null).join(', '))
-  // Reset the selected values for the new round
-  selectedValues.value = [[null, null, null, null]]
-  round.value = 0
-  message.value = null
-  showMessage.value = false
-  title.value = undefined
-  type.value = 'info'
-}
-
-const selectedValues = ref<(number | null)[][]>([[null, null, null, null]])
-const round = ref(0)
-
-const message = ref<string | null>(null)
-const showMessage = ref(false)
-const title = ref<string | undefined>(undefined)
-const type = ref<'info' | 'success' | 'error'>('info')
-
-const perfect = ref<number[]>([0])
-const correct = ref<number[]>([0])
-
-const submitGuess = () => {
-  // If there are no more rounds, return. if the guesses were all perfect, alert the user.
-  if (round.value >= 9 && selectedValues.value[round.value] !== randomValues?.value) {
-    message.value = 'You have no more attempts left!'
-    showMessage.value = true
-    title.value = 'Game Over'
-    type.value = 'error'
-    return
-  }
-  if (JSON.stringify(selectedValues.value[round.value]) === JSON.stringify(randomValues.value)) {
-    message.value = 'Congratulations! You guessed the combination!'
-    showMessage.value = true
-    title.value = 'Success'
-    type.value = 'success'
-    return
-  }
-
-  // If the guess is not correct, increment the round and add a new empty guess
-  title.value = 'Incorrect Guess'
-  type.value = 'error'
-  // Calculate feedback: perfect (right color, right place), correct (right color, wrong place), wrong
-  let guess = [...selectedValues.value[round.value]]
-  let answerCopy = [...randomValues.value || []]
-  guess.forEach((value, i) => {
-    if (value !== null && answerCopy[i] !== null && value === answerCopy[i]) {
-      if (!perfect.value[round.value]) {
-        perfect.value[round.value] = 0
-      }
-      perfect.value[round.value]++
-      guess[i] = null // Mark as counted
-      // Remove the value from randomValues to avoid counting it again
-      answerCopy[i] = null
-    }
-    return
-  })
-
-  // Count correct guesses (right color, wrong place)
-  guess.forEach((value, i) => {
-    if (value !== null && answerCopy !== null && answerCopy.includes(value)) {
-      if (!correct.value[round.value]) {
-        correct.value[round.value] = 0
-      }
-      correct.value[round.value]++
-    }
-  })
-
-  const wrong = 4 - perfect.value[round.value] - correct.value[round.value]
-
-  message.value = `Round ${round.value} started. Perfect: ${perfect.value[round.value]}, Correct: ${correct.value[round.value]}, Wrong: ${wrong}. You have ${10 - round.value} attempts left.`
-  showMessage.value = true
-  round.value++
-  // Add a new empty guess for the next round
-  selectedValues.value.push([null, null, null, null])
-  console.log('Perfect:', perfect.value[round.value - 1], 'Correct:', correct.value[round.value - 1])
-}
-</script>
-
 <template>
-  <main class="flex flex-col md:flex-row items-center justify-center p-4 gap-4 w-full h-screen">
-    <div
-      v-if="!randomValues"
-      class="flex flex-col items-start justify-center gap-2 p-4 bg-gray-100 rounded-lg shadow-md max-w-md mx-auto"
-    >
-      <h1>Mastermind Game</h1>
-      <p>Click the button to generate a random combination of colors.</p>
-      <button
-        @click="generateValues"
-        class="bg-green-200 rounded-md px-4 py-2 shadow-md cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200"
-      >
-        Generate
-      </button>
-      <p>Try to guess the combination in the game!</p>
-    </div>
-    <!-- Game -->
-    <div
-      v-if="randomValues"
-      class="flex flex-col items-center justify-center gap-2 p-4 bg-gray-100 rounded-lg shadow-md max-w-md mx-auto"
-    >
-      <h2 class="text-lg font-semibold">Round {{ round + 1 }}</h2>
-      <p class="text-sm text-gray-500">You have {{ 10 - round }} attempts left.</p>
-      <div
-        v-for="(selectedValue, index) in selectedValues"
-        class="flex items-end justify-start gap-2 p-4 w-full"
-      >
-        <Listbox
-          as="div"
-          v-for="(value, index) in selectedValue"
-          :key="index"
-          v-model="selectedValue[index]"
-          class="w-fit flex flex-col items-center gap-2"
-        >
-          <ListboxLabel class="text-lg font-semibold">#{{ index + 1 }}</ListboxLabel>
-          <ListboxButton
-            ><div
-              class="w-10 h-10 border rounded-md p-2"
-              :class="`bg-${value !== null ? colorMap[value] : 'gray-300'}`"
-            ></div
-          ></ListboxButton>
-          <ListboxOptions class="bg-white border rounded-md absolute p-1 flex flex-col gap-1">
-            <ListboxOption
-              v-for="(color, index) in Object.keys(colorMap)"
-              :key="index"
-              :value="Number(color)"
-              class="p-2 cursor-pointer w-10 h-10 rounded-md shadow-md"
-              :class="`bg-${colorMap[Number(color)]}`"
-            >
-            </ListboxOption>
-          </ListboxOptions>
-        </Listbox>
-        <button
-          v-if="randomValues && index === round"
-          @click="submitGuess"
-          :disabled="selectedValues[round].includes(null)"
-          class="bg-amber-600 disabled:bg-amber-200 disabled:shadow-none disabled:hover:shadow-none disabled:hover:scale-100 text-white rounded-lg p-2 shadow-md cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200"
-        >
-          <IconCheck class="w-6 h-6 inline-block" />
-        </button>
-        <div v-if="index !== round" class="flex items-center justify-center">
-          <div class="flex">
-            <template v-if="selectedValue && randomValues">
-              <template v-for="n in perfect[index]">
-                <div class="w-4 h-4 rounded-full m-1 bg-green-500"></div>
-              </template>
-              <template v-for="n in correct[index]">
-                <div class="w-4 h-4 rounded-full m-1 bg-amber-500"></div>
-              </template>
-            </template>
+  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4 py-12">
+      <!-- Header Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Welcome to Gaming Hub
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Explore our collection of interactive games and tools. Challenge your mind with puzzles 
+          and calculations in a beautifully designed interface.
+        </p>
+      </div>
+
+      <!-- Applications Grid -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Mastermind Game Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+          <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <!-- Visual representation of mastermind -->
+              <div class="flex space-x-2">
+                <div class="w-8 h-8 rounded-full bg-red-500 shadow-lg"></div>
+                <div class="w-8 h-8 rounded-full bg-blue-500 shadow-lg"></div>
+                <div class="w-8 h-8 rounded-full bg-green-500 shadow-lg"></div>
+                <div class="w-8 h-8 rounded-full bg-yellow-500 shadow-lg"></div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4">
+              <IconPuzzle class="w-8 h-8 text-white/80" />
+            </div>
+          </div>
+          
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Mastermind Game
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Test your deductive reasoning skills! Guess the secret color combination within 10 attempts. 
+              Get feedback on each guess to help narrow down the solution.
+            </p>
+            
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                <span class="flex items-center">
+                  <IconTarget class="w-4 h-4 mr-1" />
+                  Logic Puzzle
+                </span>
+                <span class="flex items-center">
+                  <IconClock class="w-4 h-4 mr-1" />
+                  5-15 min
+                </span>
+              </div>
+              
+              <router-link 
+                to="/mastermind"
+                class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2 group"
+              >
+                <span>Play Game</span>
+                <IconArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </router-link>
+            </div>
+          </div>
+        </div>
+
+        <!-- Parser Calculator Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+          <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <!-- Visual representation of calculator -->
+              <div class="text-white font-mono text-2xl">
+                2 × 3 + 6 = 12
+              </div>
+            </div>
+            <div class="absolute top-4 right-4">
+              <IconCalculator class="w-8 h-8 text-white/80" />
+            </div>
+          </div>
+          
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Math Parser Calculator
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Advanced mathematical expression parser and calculator. Supports complex equations with 
+              parentheses, multiple operators, and proper order of operations.
+            </p>
+            
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                <span class="flex items-center">
+                  <IconMath class="w-4 h-4 mr-1" />
+                  Calculator
+                </span>
+                <span class="flex items-center">
+                  <IconBolt class="w-4 h-4 mr-1" />
+                  Instant
+                </span>
+              </div>
+              
+              <router-link 
+                to="/parser"
+                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2 group"
+              >
+                <span>Try Calculator</span>
+                <IconArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </router-link>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Features Section -->
+      <div class="mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Features</h2>
+        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div class="p-6">
+            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <IconDeviceDesktop class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Responsive Design</h3>
+            <p class="text-gray-600 dark:text-gray-300">Works perfectly on desktop, tablet, and mobile devices</p>
+          </div>
+          
+          <div class="p-6">
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <IconPalette class="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Beautiful UI</h3>
+            <p class="text-gray-600 dark:text-gray-300">Clean, modern interface with smooth animations</p>
+          </div>
+          
+          <div class="p-6">
+            <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <IconRocket class="w-6 h-6 text-green-600 dark:text-green-400" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Fast & Efficient</h3>
+            <p class="text-gray-600 dark:text-gray-300">Built with Vue 3 and optimized for performance</p>
           </div>
         </div>
       </div>
-      <button
-        @click="generateValues"
-        class="bg-green-200 rounded-md px-4 py-2 shadow-md cursor-pointer hover:shadow-lg hover:scale-105 transition-all duration-200"
-      >
-        Regenerate
-      </button>
 
-      <div class="hidden bg-green-500"></div>
-      <div class="hidden bg-green-700"></div>
-      <div class="hidden bg-red-500"></div>
-      <div class="hidden bg-red-700"></div>
-      <div class="hidden bg-yellow-500"></div>
-      <div class="hidden bg-yellow-700"></div>
-      <div class="hidden bg-blue-500"></div>
-      <div class="hidden bg-blue-700"></div>
-      <div class="hidden bg-white"></div>
-      <div class="hidden bg-black"></div>
+      <!-- Footer -->
+      <div class="mt-16 text-center text-gray-500 dark:text-gray-400">
+        <p>Built with Vue 3, TypeScript, and Tailwind CSS</p>
+      </div>
     </div>
-
-    <Message
-      v-if="message"
-      :show="showMessage"
-      :message="message"
-      :title="title"
-      :type="type"
-      @close="showMessage = false"
-    />
-  </main>
+  </div>
 </template>
+
+<script setup lang="ts">
+import { 
+  IconPuzzle, 
+  IconCalculator, 
+  IconTarget, 
+  IconClock, 
+  IconArrowRight, 
+  IconMath, 
+  IconBolt,
+  IconDeviceDesktop,
+  IconPalette,
+  IconRocket
+} from '@tabler/icons-vue'
+</script>
+
+<style scoped>
+/* Add any additional custom styles if needed */
+</style>
