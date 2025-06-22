@@ -1,260 +1,315 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-slate-900 dark:to-gray-900 relative overflow-hidden">
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-green-400/10 to-emerald-400/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <!-- Ultra Advanced Background -->
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Animated Mesh Gradient -->
+      <div class="absolute inset-0 opacity-40">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-indigo-500/30 animate-pulse"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-blue-500/20 to-transparent animate-ping" style="animation-duration: 4s;"></div>
+      </div>
+      
+      <!-- 3D Floating Elements -->
+      <div class="absolute inset-0 perspective-1000">
+        <div class="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-600 rounded-3xl opacity-20 animate-float-3d transform rotate-12 hover:rotate-45 transition-all duration-1000"></div>
+        <div class="absolute top-40 right-32 w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-600 rounded-full opacity-30 animate-float-3d-delay transform -rotate-12 hover:rotate-12 transition-all duration-1000"></div>
+        <div class="absolute bottom-32 left-40 w-40 h-40 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl opacity-15 animate-float-3d transform rotate-45 hover:-rotate-12 transition-all duration-1000"></div>
+        <div class="absolute bottom-20 right-20 w-28 h-28 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-full opacity-25 animate-float-3d-delay transform -rotate-45 hover:rotate-45 transition-all duration-1000"></div>
+      </div>
+
+      <!-- Particle System -->
+      <div class="absolute inset-0">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+      </div>
     </div>
 
     <div class="relative z-10">
-      <!-- Hero Section -->
-      <section class="px-4 pt-20 pb-16 sm:px-6 lg:px-8">
+      <!-- Hero Section with 3D Effects -->
+      <section class="px-4 pt-32 pb-24 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center space-y-8">
-            <!-- Main Heading -->
-            <div class="space-y-6">
-              <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200/50 dark:border-purple-700/50">
-                <span class="text-sm font-medium text-purple-700 dark:text-purple-300">🎯 Welcome to the ultimate</span>
-              </div>
-              
-              <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black bg-gradient-to-r from-gray-900 via-purple-800 to-indigo-900 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent leading-tight">
-                Gaming Hub
+          <div class="text-center space-y-12 transform-gpu">
+            
+            <!-- Premium Badge -->
+            <div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-xl border border-purple-500/30 shadow-2xl transform hover:scale-105 transition-all duration-500">
+              <div class="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse mr-3"></div>
+              <span class="text-sm font-bold bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent">🚀 NEXT-GENERATION GAMING EXPERIENCE</span>
+            </div>
+            
+            <!-- Main Title with 3D Effect -->
+            <div class="space-y-8">
+              <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black leading-none">
+                <span class="block bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent transform-gpu hover:scale-105 transition-transform duration-700 cursor-default select-none" style="text-shadow: 0 0 80px rgba(147, 51, 234, 0.5);">
+                  GAMING
+                </span>
+                <span class="block bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200 bg-clip-text text-transparent transform-gpu hover:scale-105 transition-transform duration-700 cursor-default select-none mt-4" style="text-shadow: 0 0 80px rgba(236, 72, 153, 0.5);">
+                  HUB
+                </span>
               </h1>
               
-              <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
-                Immerse yourself in our curated collection of 
-                <span class="font-semibold text-purple-600 dark:text-purple-400">mind-bending puzzles</span> and 
-                <span class="font-semibold text-blue-600 dark:text-blue-400">powerful tools</span> 
-                crafted for the modern digital experience.
-              </p>
+              <div class="max-w-4xl mx-auto space-y-6">
+                <p class="text-xl sm:text-2xl lg:text-3xl text-gray-300 leading-relaxed font-light">
+                  Experience the future of 
+                  <span class="font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">interactive entertainment</span> 
+                  with cutting-edge design and 
+                  <span class="font-bold text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">immersive gameplay</span>
+                </p>
+                
+                <!-- CTA Buttons with 3D Effects -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+                  <router-link 
+                    to="/mastermind"
+                    class="group relative inline-flex items-center px-12 py-6 bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 text-white font-bold text-lg rounded-2xl shadow-2xl transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 hover:shadow-purple-500/50"
+                  >
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative flex items-center space-x-3">
+                      <IconPuzzle class="w-6 h-6 group-hover:rotate-180 transition-transform duration-700" />
+                      <span>ENTER THE MATRIX</span>
+                      <IconArrowRight class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-500" />
+                    </div>
+                  </router-link>
+                  
+                  <router-link 
+                    to="/parser"
+                    class="group relative inline-flex items-center px-12 py-6 bg-gradient-to-r from-emerald-600 via-blue-600 to-cyan-600 text-white font-bold text-lg rounded-2xl shadow-2xl transform hover:scale-110 hover:-translate-y-2 transition-all duration-500 hover:shadow-cyan-500/50"
+                  >
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative flex items-center space-x-3">
+                      <IconCalculator class="w-6 h-6 group-hover:rotate-180 transition-transform duration-700" />
+                      <span>COMPUTE REALITY</span>
+                      <IconArrowRight class="w-6 h-6 group-hover:translate-x-2 transition-transform duration-500" />
+                    </div>
+                  </router-link>
+                </div>
+              </div>
             </div>
 
-            <!-- Quick Stats -->
-            <div class="flex justify-center items-center space-x-8 pt-8">
-              <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400">2</div>
-                <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Applications</div>
+            <!-- Advanced Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-16">
+              <div class="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative text-center">
+                  <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">∞</div>
+                  <div class="text-white font-bold text-lg mb-1">POSSIBILITIES</div>
+                  <div class="text-gray-400 text-sm">Endless combinations</div>
+                </div>
               </div>
-              <div class="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
-              <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">∞</div>
-                <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Possibilities</div>
+              
+              <div class="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative text-center">
+                  <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">100%</div>
+                  <div class="text-white font-bold text-lg mb-1">PRECISION</div>
+                  <div class="text-gray-400 text-sm">Mathematical accuracy</div>
+                </div>
               </div>
-              <div class="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
-              <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400">100%</div>
-                <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Free</div>
+              
+              <div class="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-green-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 to-emerald-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative text-center">
+                  <div class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-2">0ms</div>
+                  <div class="text-white font-bold text-lg mb-1">LATENCY</div>
+                  <div class="text-gray-400 text-sm">Instant response</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Applications Section -->
-      <section class="px-4 py-24 sm:px-6 lg:px-8">
+      <!-- Revolutionary Application Cards -->
+      <section class="px-4 py-32 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Choose Your Adventure
+          
+          <div class="text-center mb-20">
+            <h2 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-8 transform hover:scale-105 transition-transform duration-700">
+              <span class="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                CHOOSE YOUR
+              </span>
+              <br />
+              <span class="bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 bg-clip-text text-transparent">
+                DIMENSION
+              </span>
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Each application is meticulously designed to provide a unique and engaging experience
-            </p>
           </div>
 
-          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div class="grid lg:grid-cols-2 gap-16">
             
-            <!-- Mastermind Game Card -->
-            <div class="group relative">
-              <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <div class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 group-hover:-translate-y-2">
+            <!-- Mastermind: Ultra Premium Card -->
+            <div class="group relative perspective-1000">
+              <!-- Card Shadow/Glow -->
+              <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-700 scale-105"></div>
+              
+              <!-- Main Card -->
+              <div class="relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-2xl rounded-3xl border border-purple-500/30 overflow-hidden transform-gpu group-hover:rotateY-5 transition-all duration-700">
                 
-                <!-- Card Header -->
-                <div class="relative h-64 bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 overflow-hidden">
-                  <!-- Background Pattern -->
-                  <div class="absolute inset-0 opacity-20">
-                    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+                <!-- Header with 3D Scene -->
+                <div class="relative h-80 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 overflow-hidden">
+                  <!-- 3D Background Grid -->
+                  <div class="absolute inset-0 opacity-30">
+                    <div class="grid-3d"></div>
                   </div>
                   
-                  <!-- Floating Elements -->
+                  <!-- Floating Game Elements -->
                   <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="relative">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 rounded-full bg-red-500 shadow-2xl animate-bounce" style="animation-delay: 0s;"></div>
-                        <div class="w-12 h-12 rounded-full bg-blue-500 shadow-2xl animate-bounce" style="animation-delay: 0.2s;"></div>
-                        <div class="w-12 h-12 rounded-full bg-green-500 shadow-2xl animate-bounce" style="animation-delay: 0.4s;"></div>
-                        <div class="w-12 h-12 rounded-full bg-yellow-500 shadow-2xl animate-bounce" style="animation-delay: 0.6s;"></div>
+                    <div class="relative transform-gpu group-hover:scale-110 transition-transform duration-1000">
+                      <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-2xl transform hover:scale-125 transition-all duration-500 animate-float-slow"></div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-2xl transform hover:scale-125 transition-all duration-500 animate-float-slow" style="animation-delay: 0.5s;"></div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-2xl transform hover:scale-125 transition-all duration-500 animate-float-slow" style="animation-delay: 1s;"></div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-2xl transform hover:scale-125 transition-all duration-500 animate-float-slow" style="animation-delay: 1.5s;"></div>
                       </div>
-                      <div class="absolute -top-2 -right-2 w-8 h-8 bg-white/20 rounded-full backdrop-blur animate-pulse"></div>
-                      <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-white/20 rounded-full backdrop-blur animate-pulse delay-300"></div>
+                      
+                      <!-- Holographic Effects -->
+                      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transform translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
                     </div>
                   </div>
 
-                  <!-- Icon Badge -->
-                  <div class="absolute top-6 right-6">
-                    <div class="w-16 h-16 bg-white/20 backdrop-blur-lg rounded-2xl flex items-center justify-center border border-white/30">
-                      <IconPuzzle class="w-8 h-8 text-white" />
+                  <!-- Status Indicator -->
+                  <div class="absolute top-8 right-8">
+                    <div class="flex items-center space-x-2 px-4 py-2 bg-black/50 backdrop-blur-xl rounded-full border border-purple-500/50">
+                      <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                      <span class="text-green-400 text-sm font-bold">ACTIVE</span>
                     </div>
                   </div>
 
                   <!-- Difficulty Badge -->
-                  <div class="absolute bottom-6 left-6">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-lg border border-white/30">
-                      <div class="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
-                      <span class="text-white text-sm font-medium">Intermediate</span>
+                  <div class="absolute bottom-8 left-8">
+                    <div class="px-4 py-2 bg-gradient-to-r from-orange-600/80 to-red-600/80 backdrop-blur-xl rounded-full border border-orange-500/50">
+                      <span class="text-white text-sm font-bold">EXPERT LEVEL</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Card Content -->
-                <div class="p-8 space-y-6">
+                <div class="p-10 space-y-8">
                   <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-                        Mastermind Game
-                      </h3>
-                      <div class="flex items-center space-x-1">
-                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span class="text-sm text-green-600 dark:text-green-400 font-medium">Active</span>
-                      </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      Master the art of deductive reasoning in this classic code-breaking puzzle. 
-                      Analyze clues, eliminate possibilities, and crack the secret combination using pure logic.
+                    <h3 class="text-4xl font-black text-white group-hover:text-purple-300 transition-colors duration-500">
+                      MASTERMIND
+                    </h3>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                      Enter the neural network of deductive reasoning. Crack impossible codes using pure logic and strategic thinking in this mind-bending puzzle experience.
                     </p>
                   </div>
 
-                  <!-- Features -->
-                  <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Logic Puzzle</span>
-                    <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">Pattern Recognition</span>
-                    <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">Strategic Thinking</span>
-                  </div>
-
-                  <!-- Stats -->
-                  <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <div class="text-center">
-                      <div class="flex items-center justify-center mb-2">
-                        <IconTarget class="w-5 h-5 text-purple-500 mr-2" />
-                        <span class="text-2xl font-bold text-gray-900 dark:text-white">10</span>
-                      </div>
-                      <span class="text-sm text-gray-500 dark:text-gray-400">Max Attempts</span>
+                  <!-- Enhanced Stats Grid -->
+                  <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-2xl p-6 border border-purple-500/30">
+                      <div class="text-3xl font-black text-purple-400 mb-2">10</div>
+                      <div class="text-white font-bold text-sm">MAX ATTEMPTS</div>
                     </div>
-                    <div class="text-center">
-                      <div class="flex items-center justify-center mb-2">
-                        <IconClock class="w-5 h-5 text-blue-500 mr-2" />
-                        <span class="text-2xl font-bold text-gray-900 dark:text-white">15</span>
-                      </div>
-                      <span class="text-sm text-gray-500 dark:text-gray-400">Minutes</span>
+                    <div class="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl p-6 border border-blue-500/30">
+                      <div class="text-3xl font-black text-blue-400 mb-2">∞</div>
+                      <div class="text-white font-bold text-sm">VARIATIONS</div>
                     </div>
                   </div>
 
                   <!-- Action Button -->
                   <router-link 
                     to="/mastermind"
-                    class="w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-2xl transition-all duration-300 group-hover:shadow-xl group-hover:shadow-purple-500/25 transform hover:scale-105"
+                    class="group/btn relative w-full inline-flex items-center justify-center px-8 py-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black text-xl rounded-2xl overflow-hidden transform hover:scale-105 transition-all duration-500"
                   >
-                    <span class="mr-3">Start Playing</span>
-                    <IconArrowRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent skew-x-12 transform -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                    <div class="relative flex items-center space-x-3">
+                      <IconPuzzle class="w-6 h-6 group-hover/btn:rotate-180 transition-transform duration-700" />
+                      <span>HACK THE CODE</span>
+                      <IconArrowRight class="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-500" />
+                    </div>
                   </router-link>
                 </div>
               </div>
             </div>
 
-            <!-- Parser Calculator Card -->
-            <div class="group relative">
-              <div class="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <div class="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-500 group-hover:-translate-y-2">
+            <!-- Parser: Ultra Premium Card -->
+            <div class="group relative perspective-1000">
+              <!-- Card Shadow/Glow -->
+              <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-700 scale-105"></div>
+              
+              <!-- Main Card -->
+              <div class="relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-2xl rounded-3xl border border-emerald-500/30 overflow-hidden transform-gpu group-hover:rotateY-5 transition-all duration-700">
                 
-                <!-- Card Header -->
-                <div class="relative h-64 bg-gradient-to-br from-green-500 via-emerald-600 to-blue-600 overflow-hidden">
-                  <!-- Background Pattern -->
+                <!-- Header with Mathematical Scene -->
+                <div class="relative h-80 bg-gradient-to-br from-emerald-900 via-blue-900 to-cyan-900 overflow-hidden">
+                  <!-- Matrix Rain Effect -->
                   <div class="absolute inset-0 opacity-20">
-                    <div class="absolute inset-0" style="background-image: linear-gradient(45deg, transparent 35%, white 35%, white 65%, transparent 65%), linear-gradient(-45deg, transparent 35%, white 35%, white 65%, transparent 65%); background-size: 20px 20px;"></div>
+                    <div class="matrix-rain"></div>
                   </div>
                   
-                  <!-- Mathematical Expressions -->
+                  <!-- Floating Mathematical Elements -->
                   <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="relative">
-                      <div class="text-white font-mono text-center space-y-2">
-                        <div class="text-3xl font-bold animate-pulse">2³ + √16 = 12</div>
-                        <div class="text-lg opacity-80">(5 × 3) ÷ 2 + 7</div>
-                        <div class="text-sm opacity-60">∫ x² dx = x³/3 + C</div>
+                    <div class="relative transform-gpu group-hover:scale-110 transition-transform duration-1000">
+                      <div class="text-center space-y-4">
+                        <div class="text-5xl font-black text-white animate-pulse">
+                          E = mc²
+                        </div>
+                        <div class="text-2xl text-emerald-300 opacity-80">
+                          ∫ f(x)dx = F(x) + C
+                        </div>
+                        <div class="text-lg text-cyan-300 opacity-60">
+                          lim(x→∞) = ∞
+                        </div>
                       </div>
-                      <div class="absolute -top-4 -right-4 w-8 h-8 bg-white/20 rounded-full backdrop-blur animate-spin"></div>
-                      <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-white/20 rounded-full backdrop-blur animate-ping"></div>
+                      
+                      <!-- Holographic Effects -->
+                      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 transform translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
                     </div>
                   </div>
 
-                  <!-- Icon Badge -->
-                  <div class="absolute top-6 right-6">
-                    <div class="w-16 h-16 bg-white/20 backdrop-blur-lg rounded-2xl flex items-center justify-center border border-white/30">
-                      <IconCalculator class="w-8 h-8 text-white" />
+                  <!-- Performance Indicator -->
+                  <div class="absolute top-8 right-8">
+                    <div class="flex items-center space-x-2 px-4 py-2 bg-black/50 backdrop-blur-xl rounded-full border border-emerald-500/50">
+                      <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span class="text-emerald-400 text-sm font-bold">QUANTUM</span>
                     </div>
                   </div>
 
-                  <!-- Performance Badge -->
-                  <div class="absolute bottom-6 left-6">
-                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-lg border border-white/30">
-                      <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                      <span class="text-white text-sm font-medium">Ultra Fast</span>
+                  <!-- Algorithm Badge -->
+                  <div class="absolute bottom-8 left-8">
+                    <div class="px-4 py-2 bg-gradient-to-r from-cyan-600/80 to-blue-600/80 backdrop-blur-xl rounded-full border border-cyan-500/50">
+                      <span class="text-white text-sm font-bold">AI POWERED</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Card Content -->
-                <div class="p-8 space-y-6">
+                <div class="p-10 space-y-8">
                   <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-                        Math Parser
-                      </h3>
-                      <div class="flex items-center space-x-1">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <span class="text-sm text-blue-600 dark:text-blue-400 font-medium">Advanced</span>
-                      </div>
-                    </div>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      Unleash the power of mathematical computation with our advanced expression parser. 
-                      Handle complex equations, nested operations, and mathematical functions with precision.
+                    <h3 class="text-4xl font-black text-white group-hover:text-emerald-300 transition-colors duration-500">
+                      MATH PARSER
+                    </h3>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                      Unleash quantum-level computational power. Process complex mathematical expressions with AI-driven parsing algorithms and infinite precision.
                     </p>
                   </div>
 
-                  <!-- Features -->
-                  <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Expression Parser</span>
-                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Real-time</span>
-                    <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full text-sm font-medium">Error Handling</span>
-                  </div>
-
-                  <!-- Stats -->
-                  <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <div class="text-center">
-                      <div class="flex items-center justify-center mb-2">
-                        <IconBolt class="w-5 h-5 text-yellow-500 mr-2" />
-                        <span class="text-2xl font-bold text-gray-900 dark:text-white">∞</span>
-                      </div>
-                      <span class="text-sm text-gray-500 dark:text-gray-400">Operations</span>
+                  <!-- Enhanced Stats Grid -->
+                  <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 rounded-2xl p-6 border border-emerald-500/30">
+                      <div class="text-3xl font-black text-emerald-400 mb-2">∞</div>
+                      <div class="text-white font-bold text-sm">OPERATIONS</div>
                     </div>
-                    <div class="text-center">
-                      <div class="flex items-center justify-center mb-2">
-                        <IconMath class="w-5 h-5 text-green-500 mr-2" />
-                        <span class="text-2xl font-bold text-gray-900 dark:text-white">100%</span>
-                      </div>
-                      <span class="text-sm text-gray-500 dark:text-gray-400">Accurate</span>
+                    <div class="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 rounded-2xl p-6 border border-blue-500/30">
+                      <div class="text-3xl font-black text-cyan-400 mb-2">0.1ms</div>
+                      <div class="text-white font-bold text-sm">RESPONSE</div>
                     </div>
                   </div>
 
                   <!-- Action Button -->
                   <router-link 
                     to="/parser"
-                    class="w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold rounded-2xl transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-500/25 transform hover:scale-105"
+                    class="group/btn relative w-full inline-flex items-center justify-center px-8 py-6 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-black text-xl rounded-2xl overflow-hidden transform hover:scale-105 transition-all duration-500"
                   >
-                    <span class="mr-3">Try Calculator</span>
-                    <IconArrowRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent skew-x-12 transform -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                    <div class="relative flex items-center space-x-3">
+                      <IconCalculator class="w-6 h-6 group-hover/btn:rotate-180 transition-transform duration-700" />
+                      <span>COMPUTE INFINITY</span>
+                      <IconArrowRight class="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-500" />
+                    </div>
                   </router-link>
                 </div>
               </div>
@@ -264,98 +319,17 @@
         </div>
       </section>
 
-      <!-- Features Showcase -->
-      <section class="px-4 py-24 sm:px-6 lg:px-8 bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Built for Excellence
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Every feature is crafted with attention to detail and modern best practices
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center group">
-              <div class="relative mx-auto w-20 h-20 mb-6">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl w-full h-full flex items-center justify-center border-2 border-blue-100 dark:border-blue-800">
-                  <IconDeviceDesktop class="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                </div>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Responsive Design</h3>
-              <p class="text-gray-600 dark:text-gray-300">Flawlessly adapts to any screen size, from mobile to desktop, ensuring a perfect experience everywhere.</p>
-            </div>
-
-            <div class="text-center group">
-              <div class="relative mx-auto w-20 h-20 mb-6">
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl w-full h-full flex items-center justify-center border-2 border-purple-100 dark:border-purple-800">
-                  <IconPalette class="w-8 h-8 text-purple-600 dark:text-purple-400" />
-                </div>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Beautiful Interface</h3>
-              <p class="text-gray-600 dark:text-gray-300">Stunning gradients, smooth animations, and thoughtful micro-interactions create a delightful user experience.</p>
-            </div>
-
-            <div class="text-center group">
-              <div class="relative mx-auto w-20 h-20 mb-6">
-                <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl w-full h-full flex items-center justify-center border-2 border-green-100 dark:border-green-800">
-                  <IconRocket class="w-8 h-8 text-green-600 dark:text-green-400" />
-                </div>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Lightning Fast</h3>
-              <p class="text-gray-600 dark:text-gray-300">Built with Vue 3, TypeScript, and optimized for performance. Every interaction is instant and smooth.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Call to Action -->
-      <section class="px-4 py-24 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="space-y-8">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
-              Ready to Begin?
-            </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Choose your preferred application and start exploring the possibilities
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-              <router-link 
-                to="/mastermind"
-                class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-              >
-                <IconPuzzle class="w-5 h-5 mr-3" />
-                <span>Play Mastermind</span>
-              </router-link>
-              
-              <router-link 
-                to="/parser"
-                class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25"
-              >
-                <IconCalculator class="w-5 h-5 mr-3" />
-                <span>Use Calculator</span>
-              </router-link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="px-4 py-12 sm:px-6 lg:px-8 border-t border-gray-200/50 dark:border-gray-700/50">
+      <!-- Premium Footer -->
+      <footer class="px-4 py-16 sm:px-6 lg:px-8 border-t border-white/10">
         <div class="max-w-7xl mx-auto text-center">
-          <div class="flex items-center justify-center space-x-2 mb-4">
-            <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <span class="text-white font-bold text-sm">GH</span>
+          <div class="flex items-center justify-center space-x-4 mb-6">
+            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center transform rotate-12 hover:rotate-45 transition-transform duration-500">
+              <span class="text-white font-black text-xl">GH</span>
             </div>
-            <span class="text-lg font-bold text-gray-900 dark:text-white">Gaming Hub</span>
+            <span class="text-2xl font-black text-white">GAMING HUB</span>
           </div>
-          <p class="text-gray-500 dark:text-gray-400">
-            Crafted with ❤️ using Vue 3, TypeScript, and Tailwind CSS
+          <p class="text-gray-400 text-lg">
+            Engineered with ❤️ using cutting-edge technology
           </p>
         </div>
       </footer>
@@ -367,40 +341,115 @@
 import { 
   IconPuzzle, 
   IconCalculator, 
-  IconTarget, 
-  IconClock, 
-  IconArrowRight, 
-  IconMath, 
-  IconBolt,
-  IconDeviceDesktop,
-  IconPalette,
-  IconRocket
+  IconArrowRight
 } from '@tabler/icons-vue'
 </script>
 
 <style scoped>
-/* Custom animations */
-@keyframes float {
+/* Advanced 3D Animations */
+@keyframes float-3d {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotateX(10deg) rotateY(5deg); 
+  }
+}
+
+@keyframes float-3d-delay {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+  }
+  50% { 
+    transform: translateY(-30px) rotateX(-10deg) rotateY(-5deg); 
+  }
+}
+
+@keyframes float-slow {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.animate-float-3d {
+  animation: float-3d 6s ease-in-out infinite;
 }
 
-.animate-float-delay {
-  animation: float 3s ease-in-out infinite;
-  animation-delay: 1s;
+.animate-float-3d-delay {
+  animation: float-3d-delay 8s ease-in-out infinite;
 }
 
-/* Backdrop blur fallback */
-@supports not (backdrop-filter: blur(10px)) {
-  .backdrop-blur-xl {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-  
-  .dark .backdrop-blur-xl {
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+/* 3D Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.rotateY-5:hover {
+  transform: rotateY(5deg);
+}
+
+/* Particle System */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #8b5cf6, transparent);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.particle-1 { top: 20%; left: 10%; animation: float-3d 8s ease-in-out infinite; }
+.particle-2 { top: 40%; right: 15%; animation: float-3d-delay 10s ease-in-out infinite; }
+.particle-3 { bottom: 30%; left: 20%; animation: float-3d 12s ease-in-out infinite; }
+.particle-4 { top: 60%; left: 70%; animation: float-3d-delay 7s ease-in-out infinite; }
+.particle-5 { bottom: 20%; right: 25%; animation: float-3d 9s ease-in-out infinite; }
+.particle-6 { top: 80%; left: 60%; animation: float-3d-delay 11s ease-in-out infinite; }
+.particle-7 { top: 10%; right: 40%; animation: float-3d 13s ease-in-out infinite; }
+.particle-8 { bottom: 50%; left: 80%; animation: float-3d-delay 6s ease-in-out infinite; }
+
+/* 3D Grid Effect */
+.grid-3d {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  to { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+}
+
+/* Matrix Rain Effect */
+.matrix-rain {
+  background: linear-gradient(0deg, transparent 0%, rgba(16, 185, 129, 0.1) 50%, transparent 100%);
+  background-size: 100% 100px;
+  animation: matrix-fall 3s linear infinite;
+}
+
+@keyframes matrix-fall {
+  from { background-position: 0 -100px; }
+  to { background-position: 0 100vh; }
+}
+
+/* Enhanced Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Backdrop Blur Support */
+@supports not (backdrop-filter: blur(20px)) {
+  .backdrop-blur-2xl {
     background-color: rgba(17, 24, 39, 0.9);
   }
 }
