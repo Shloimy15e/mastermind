@@ -118,211 +118,210 @@ const submitGuess = () => {
       </div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 py-12 sm:px-8 lg:px-12">
-      <!-- Header Section -->
-      <div class="text-center mb-12">
-        <div class="mb-8">
-          <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg mb-8">
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- Content Container -->
+      <div class="flex-1 flex flex-col items-center justify-start gap-16 px-6 py-12">
+        
+        <!-- Header Section -->
+        <div class="flex flex-col items-center gap-8 text-center max-w-3xl">
+          <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg">
             <div class="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse mr-2.5"></div>
             <span class="text-xs font-medium text-gray-700 dark:text-gray-300 tracking-wide">LOGIC PUZZLE GAME</span>
           </div>
-        </div>
-        
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tight mb-8">
-          <span class="block bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 dark:from-white dark:via-blue-200 dark:to-indigo-200 bg-clip-text text-transparent">
-            Mastermind
-          </span>
-          <span class="block bg-gradient-to-r from-indigo-800 via-purple-800 to-blue-900 dark:from-indigo-200 dark:via-purple-200 dark:to-blue-200 bg-clip-text text-transparent">
-            Challenge
-          </span>
-        </h1>
-        
-        <div class="max-w-2xl mx-auto">
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tight">
+            <span class="block bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 dark:from-white dark:via-blue-200 dark:to-indigo-200 bg-clip-text text-transparent">
+              Mastermind
+            </span>
+            <span class="block bg-gradient-to-r from-indigo-800 via-purple-800 to-blue-900 dark:from-indigo-200 dark:via-purple-200 dark:to-blue-200 bg-clip-text text-transparent">
+              Challenge
+            </span>
+          </h1>
+          
           <p class="text-lg sm:text-xl leading-[1.6] font-light text-gray-600 dark:text-gray-300">
             Crack the secret color combination using 
             <span class="font-semibold text-blue-600 dark:text-blue-400">deductive reasoning</span> and 
             <span class="font-semibold text-indigo-600 dark:text-indigo-400">logical thinking</span>
           </p>
         </div>
-      </div>
 
-      <!-- Game Content -->
-      <div class="flex flex-col items-center justify-center">
-        <!-- Start Game Screen -->
-        <div
-          v-if="!randomValues"
-          class="max-w-md mx-auto"
-        >
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 text-center">
-            <div class="mb-6">
-              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
-                </svg>
+        <!-- Game Content -->
+        <div class="flex flex-col items-center gap-12 w-full">
+          <!-- Start Game Screen -->
+          <div v-if="!randomValues" class="w-full max-w-md">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8 text-center">
+              <div class="flex flex-col items-center gap-6">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                
+                <div class="flex flex-col gap-4 text-center">
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Ready to Play?</h2>
+                  <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    I'll generate a secret combination of 4 colors. Your goal is to guess the exact sequence within 10 attempts using the feedback clues.
+                  </p>
+                </div>
+                
+                <button
+                  @click="generateValues"
+                  class="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                >
+                  <span class="relative z-10">Generate Secret Code</span>
+                  <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+
+                <div class="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400">
+                  <p>🔴 Perfect: Right color, right position</p>
+                  <p>🟡 Correct: Right color, wrong position</p>
+                </div>
               </div>
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ready to Play?</h2>
-              <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I'll generate a secret combination of 4 colors. Your goal is to guess the exact sequence within 10 attempts using the feedback clues.
-              </p>
-            </div>
-            
-            <button
-              @click="generateValues"
-              class="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
-            >
-              <span class="relative z-10">Generate Secret Code</span>
-              <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </button>
-
-            <div class="mt-6 text-sm text-gray-500 dark:text-gray-400">
-              <p>🔴 Perfect: Right color, right position</p>
-              <p>🟡 Correct: Right color, wrong position</p>
             </div>
           </div>
-        </div>
 
-        <!-- Game Board -->
-        <div
-          v-if="randomValues"
-          class="max-w-2xl mx-auto w-full"
-        >
-          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8">
-            <!-- Game Header -->
-            <div class="text-center mb-8">
-              <div class="flex items-center justify-center space-x-4 mb-4">
-                <div class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <span class="text-sm font-semibold text-blue-700 dark:text-blue-300">Round {{ round + 1 }}</span>
-                </div>
-                <div class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full">
-                  <span class="text-sm font-semibold text-indigo-700 dark:text-indigo-300">{{ 10 - round }} attempts left</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Guess Rows -->
-            <div class="space-y-4 mb-8">
-              <div
-                v-for="(selectedValue, rowIndex) in selectedValues"
-                :key="rowIndex"
-                class="flex items-center justify-between p-4 rounded-xl border"
-                :class="rowIndex === round ? 'bg-blue-50/80 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700' : 'bg-gray-50/50 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600'"
-              >
-                <!-- Color Selection -->
-                <div class="flex items-center space-x-3">
-                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300 w-12">{{ rowIndex + 1 }}.</span>
-                  
-                  <div class="flex space-x-2">
-                    <Listbox
-                      as="div"
-                      v-for="(value, colorIndex) in selectedValue"
-                      :key="colorIndex"
-                      v-model="selectedValue[colorIndex]"
-                      class="relative"
-                    >
-                      <ListboxButton class="group">
-                        <div
-                          class="w-12 h-12 rounded-xl border-2 border-gray-300 dark:border-gray-600 transition-all duration-200 group-hover:scale-105 group-hover:shadow-md"
-                          :class="value !== null ? `bg-${colorMap[value]}` : 'bg-gray-200 dark:bg-gray-600'"
-                        ></div>
-                      </ListboxButton>
-                      <ListboxOptions class="absolute z-50 mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 shadow-xl backdrop-blur-xl">
-                        <div class="grid grid-cols-3 gap-2">
-                          <ListboxOption
-                            v-for="(color, colorKeyIndex) in Object.keys(colorMap)"
-                            :key="colorKeyIndex"
-                            :value="Number(color)"
-                            class="w-10 h-10 rounded-lg cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-md"
-                            :class="`bg-${colorMap[Number(color)]}`"
-                          >
-                          </ListboxOption>
-                        </div>
-                      </ListboxOptions>
-                    </Listbox>
+          <!-- Game Board -->
+          <div v-if="randomValues" class="w-full max-w-2xl">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8">
+              <div class="flex flex-col gap-8">
+                <!-- Game Header -->
+                <div class="flex items-center justify-center gap-4">
+                  <div class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                    <span class="text-sm font-semibold text-blue-700 dark:text-blue-300">Round {{ round + 1 }}</span>
+                  </div>
+                  <div class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full">
+                    <span class="text-sm font-semibold text-indigo-700 dark:text-indigo-300">{{ 10 - round }} attempts left</span>
                   </div>
                 </div>
 
-                <!-- Submit Button or Feedback -->
-                <div class="flex items-center">
-                  <button
-                    v-if="randomValues && rowIndex === round"
-                    @click="submitGuess"
-                    :disabled="selectedValues[round].includes(null)"
-                    class="group relative px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg disabled:transform-none disabled:shadow-none focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+                <!-- Guess Rows -->
+                <div class="flex flex-col gap-4">
+                  <div
+                    v-for="(selectedValue, rowIndex) in selectedValues"
+                    :key="rowIndex"
+                    class="flex items-center justify-between p-4 rounded-xl border"
+                    :class="rowIndex === round ? 'bg-blue-50/80 dark:bg-blue-900/20 border-blue-200 dark:border-blue-700' : 'bg-gray-50/50 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600'"
                   >
-                    <span class="relative z-10 flex items-center space-x-2">
-                      <IconCheck class="w-5 h-5" />
-                      <span>Submit</span>
-                    </span>
+                    <!-- Color Selection -->
+                    <div class="flex items-center gap-3">
+                      <span class="text-sm font-medium text-gray-700 dark:text-gray-300 w-12">{{ rowIndex + 1 }}.</span>
+                      
+                      <div class="flex gap-2">
+                        <Listbox
+                          as="div"
+                          v-for="(value, colorIndex) in selectedValue"
+                          :key="colorIndex"
+                          v-model="selectedValue[colorIndex]"
+                          class="relative"
+                        >
+                          <ListboxButton class="group">
+                            <div
+                              class="w-12 h-12 rounded-xl border-2 border-gray-300 dark:border-gray-600 transition-all duration-200 group-hover:scale-105 group-hover:shadow-md"
+                              :class="value !== null ? `bg-${colorMap[value]}` : 'bg-gray-200 dark:bg-gray-600'"
+                            ></div>
+                          </ListboxButton>
+                          <ListboxOptions class="absolute z-50 mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 shadow-xl backdrop-blur-xl">
+                            <div class="grid grid-cols-3 gap-2">
+                              <ListboxOption
+                                v-for="(color, colorKeyIndex) in Object.keys(colorMap)"
+                                :key="colorKeyIndex"
+                                :value="Number(color)"
+                                class="w-10 h-10 rounded-lg cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-md"
+                                :class="`bg-${colorMap[Number(color)]}`"
+                              >
+                              </ListboxOption>
+                            </div>
+                          </ListboxOptions>
+                        </Listbox>
+                      </div>
+                    </div>
+
+                    <!-- Submit Button or Feedback -->
+                    <div class="flex items-center">
+                      <button
+                        v-if="randomValues && rowIndex === round"
+                        @click="submitGuess"
+                        :disabled="selectedValues[round].includes(null)"
+                        class="group relative px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg disabled:transform-none disabled:shadow-none focus:outline-none focus:ring-4 focus:ring-emerald-500/50"
+                      >
+                        <span class="relative z-10 flex items-center gap-2">
+                          <IconCheck class="w-5 h-5" />
+                          <span>Submit</span>
+                        </span>
+                        <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </button>
+                      
+                      <!-- Feedback Dots -->
+                      <div v-if="rowIndex !== round" class="flex items-center gap-1">
+                        <template v-if="selectedValue && randomValues">
+                          <template v-for="n in perfect[rowIndex]" :key="'perfect-' + n">
+                            <div class="w-4 h-4 rounded-full bg-emerald-500 border border-emerald-600"></div>
+                          </template>
+                          <template v-for="n in correct[rowIndex]" :key="'correct-' + n">
+                            <div class="w-4 h-4 rounded-full bg-amber-500 border border-amber-600"></div>
+                          </template>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex justify-center">
+                  <button
+                    @click="generateValues"
+                    class="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-500/50"
+                  >
+                    <span class="relative z-10">New Game</span>
                     <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
-                  
-                  <!-- Feedback Dots -->
-                  <div v-if="rowIndex !== round" class="flex items-center space-x-1">
-                    <template v-if="selectedValue && randomValues">
-                      <template v-for="n in perfect[rowIndex]" :key="'perfect-' + n">
-                        <div class="w-4 h-4 rounded-full bg-emerald-500 border border-emerald-600"></div>
-                      </template>
-                      <template v-for="n in correct[rowIndex]" :key="'correct-' + n">
-                        <div class="w-4 h-4 rounded-full bg-amber-500 border border-amber-600"></div>
-                      </template>
-                    </template>
-                  </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="text-center">
-              <button
-                @click="generateValues"
-                class="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-500/50"
-              >
-                <span class="relative z-10">New Game</span>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
             </div>
           </div>
-        </div>
 
-        <!-- How to Play Section -->
-        <div v-if="randomValues" class="max-w-4xl mx-auto mt-12">
-          <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md">
-            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 text-center">How to Play</h3>
-            <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
-              <div class="flex items-start space-x-3">
-                <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-white text-xs font-bold">1</span>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">Select Colors</h4>
-                  <p>Click on each circle to choose from 6 available colors for your guess.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-3">
-                <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-white text-xs font-bold">2</span>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">Submit Guess</h4>
-                  <p>Once all 4 colors are selected, click Submit to see your feedback.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-3">
-                <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-white text-xs font-bold">3</span>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">Read Feedback</h4>
-                  <p>🟢 Perfect: Right color in right position. 🟡 Correct: Right color in wrong position.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-3">
-                <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-white text-xs font-bold">4</span>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 dark:text-white">Crack the Code</h4>
-                  <p>Use feedback to deduce the secret combination within 10 attempts!</p>
+          <!-- How to Play Section -->
+          <div v-if="randomValues" class="w-full max-w-4xl">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md">
+              <div class="flex flex-col gap-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white text-center">How to Play</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 dark:text-gray-300">
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-white text-xs font-bold">1</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <h4 class="font-semibold text-gray-900 dark:text-white">Select Colors</h4>
+                      <p>Click on each circle to choose from 6 available colors for your guess.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-white text-xs font-bold">2</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <h4 class="font-semibold text-gray-900 dark:text-white">Submit Guess</h4>
+                      <p>Once all 4 colors are selected, click Submit to see your feedback.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-white text-xs font-bold">3</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <h4 class="font-semibold text-gray-900 dark:text-white">Read Feedback</h4>
+                      <p>🟢 Perfect: Right color in right position. 🟡 Correct: Right color in wrong position.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span class="text-white text-xs font-bold">4</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <h4 class="font-semibold text-gray-900 dark:text-white">Crack the Code</h4>
+                      <p>Use feedback to deduce the secret combination within 10 attempts!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -15,172 +15,182 @@
       </div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 py-20 sm:px-8 lg:px-12">
-      <!-- Header Section -->
-      <div class="text-center mb-12">
-        <div class="mb-8">
-          <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg mb-8">
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- Content Container -->
+      <div class="flex-1 flex flex-col items-center justify-start gap-16 px-6 py-20">
+        
+        <!-- Header Section -->
+        <div class="flex flex-col items-center gap-8 text-center max-w-3xl">
+          <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg">
             <div class="w-1.5 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-pulse mr-2.5"></div>
             <span class="text-xs font-medium text-gray-700 dark:text-gray-300 tracking-wide">MATH PARSER ENGINE</span>
           </div>
-        </div>
-        
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tight mb-8">
-          <span class="block bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-900 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
-            Advanced Math
-          </span>
-          <span class="block bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-900 dark:from-indigo-200 dark:via-purple-200 dark:to-pink-200 bg-clip-text text-transparent">
-            Calculator
-          </span>
-        </h1>
-        
-        <div class="max-w-2xl mx-auto">
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.9] tracking-tight">
+            <span class="block bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-900 dark:from-white dark:via-indigo-200 dark:to-purple-200 bg-clip-text text-transparent">
+              Advanced Math
+            </span>
+            <span class="block bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-900 dark:from-indigo-200 dark:via-purple-200 dark:to-pink-200 bg-clip-text text-transparent">
+              Calculator
+            </span>
+          </h1>
+          
           <p class="text-lg sm:text-xl leading-[1.6] font-light text-gray-600 dark:text-gray-300">
             Parse and evaluate complex mathematical expressions with 
             <span class="font-semibold text-indigo-600 dark:text-indigo-400">operator precedence</span> and 
             <span class="font-semibold text-purple-600 dark:text-purple-400">parentheses support</span>
           </p>
         </div>
-      </div>
 
-      <!-- Main Calculator Interface -->
-      <div class="max-w-3xl mx-auto mb-16">
-        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8">
-          <!-- Input Section -->
-          <div class="mb-8">
-            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-              Enter Mathematical Expression
-            </label>
-            <div class="flex gap-4">
-              <div class="flex-1 relative">
-                <input 
-                  v-model="equation" 
-                  type="text"
-                  placeholder="e.g., 2 * 3 + 6 * (4 - 1)" 
-                  @keyup.enter="calculateResult"
-                  class="w-full px-4 py-4 text-lg bg-white/90 dark:bg-gray-900/90 border-2 border-gray-200/60 dark:border-gray-600/60 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/20 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
-                />
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500/5 to-purple-500/5 pointer-events-none"></div>
-              </div>
-              <button 
-                @click="calculateResult"
-                class="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-500/50"
-              >
-                <span class="relative z-10">Calculate</span>
-                <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Result Section -->
-          <div v-if="result !== null" class="mb-6">
-            <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200/50 dark:border-green-700/50">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                  <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                    </svg>
+        <!-- Main Calculator Interface -->
+        <div class="w-full max-w-3xl">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl p-8">
+            <!-- Input Section -->
+            <div class="flex flex-col gap-8">
+              <div class="flex flex-col gap-3">
+                <label class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  Enter Mathematical Expression
+                </label>
+                <div class="flex gap-4">
+                  <div class="flex-1 relative">
+                    <input 
+                      v-model="equation" 
+                      type="text"
+                      placeholder="e.g., 2 * 3 + 6 * (4 - 1)" 
+                      @keyup.enter="calculateResult"
+                      class="w-full px-4 py-4 text-lg bg-white/90 dark:bg-gray-900/90 border-2 border-gray-200/60 dark:border-gray-600/60 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/20 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    />
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500/5 to-purple-500/5 pointer-events-none"></div>
                   </div>
-                  <span class="text-sm font-medium text-green-700 dark:text-green-300">Result</span>
+                  <button 
+                    @click="calculateResult"
+                    class="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-500/50"
+                  >
+                    <span class="relative z-10">Calculate</span>
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-white/20 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </button>
                 </div>
               </div>
-              <div class="mt-4">
-                <p class="text-2xl font-bold text-green-800 dark:text-green-200 font-mono">
-                  {{ equation }} = {{ result }}
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <!-- Error Section -->
-          <div v-if="errorMessage" class="mb-6">
-            <div class="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-red-200/50 dark:border-red-700/50">
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                  </svg>
+              <!-- Result Section -->
+              <div v-if="result !== null">
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200/50 dark:border-green-700/50">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                      </div>
+                      <span class="text-sm font-medium text-green-700 dark:text-green-300">Result</span>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <p class="text-2xl font-bold text-green-800 dark:text-green-200 font-mono">
+                      {{ equation }} = {{ result }}
+                    </p>
+                  </div>
                 </div>
-                <span class="text-sm font-medium text-red-700 dark:text-red-300">Error</span>
               </div>
-              <div class="mt-3">
-                <p class="text-red-800 dark:text-red-200">{{ errorMessage }}</p>
-              </div>
-            </div>
-          </div>
 
-          <!-- Examples Section -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Try these examples:</h3>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <button 
-                v-for="example in examples" 
-                :key="example"
-                @click="equation = example"
-                class="group text-left p-4 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg border border-gray-200/50 dark:border-gray-600/50 hover:bg-indigo-50/80 dark:hover:bg-indigo-900/20 hover:border-indigo-300/50 dark:hover:border-indigo-600/50 transition-all duration-300"
-              >
-                <code class="text-sm font-mono text-gray-700 dark:text-gray-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-300">{{ example }}</code>
-              </button>
+              <!-- Error Section -->
+              <div v-if="errorMessage">
+                <div class="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-red-200/50 dark:border-red-700/50">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <span class="text-sm font-medium text-red-700 dark:text-red-300">Error</span>
+                  </div>
+                  <div class="mt-3">
+                    <p class="text-red-800 dark:text-red-200">{{ errorMessage }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Examples Section -->
+              <div class="flex flex-col gap-4">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Try these examples:</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button 
+                    v-for="example in examples" 
+                    :key="example"
+                    @click="equation = example"
+                    class="group text-left p-4 bg-gray-50/80 dark:bg-gray-700/50 rounded-lg border border-gray-200/50 dark:border-gray-600/50 hover:bg-indigo-50/80 dark:hover:bg-indigo-900/20 hover:border-indigo-300/50 dark:hover:border-indigo-600/50 transition-all duration-300"
+                  >
+                    <code class="text-sm font-mono text-gray-700 dark:text-gray-300 group-hover:text-indigo-700 dark:group-hover:text-indigo-300">{{ example }}</code>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Features Section -->
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Parser Features</h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="group">
-            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div class="relative mx-auto w-12 h-12 mb-4">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
-                  <span class="text-xl font-bold text-blue-600 dark:text-blue-400">( )</span>
+        <!-- Features Section -->
+        <div class="flex flex-col items-center gap-12 w-full max-w-4xl">
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Parser Features</h2>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
+            <div class="group">
+              <div class="flex flex-col items-center gap-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <div class="relative w-12 h-12">
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                  <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-blue-600 dark:text-blue-400">( )</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Parentheses</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Supports nested parentheses for complex expressions</p>
                 </div>
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Parentheses</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Supports nested parentheses for complex expressions</p>
             </div>
-          </div>
 
-          <div class="group">
-            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div class="relative mx-auto w-12 h-12 mb-4">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
-                  <span class="text-xl font-bold text-indigo-600 dark:text-indigo-400">+-*/</span>
+            <div class="group">
+              <div class="flex flex-col items-center gap-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <div class="relative w-12 h-12">
+                  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                  <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-indigo-600 dark:text-indigo-400">+-*/</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Basic Operations</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Add, subtract, multiply, and divide with precision</p>
                 </div>
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Basic Operations</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Add, subtract, multiply, and divide with precision</p>
             </div>
-          </div>
 
-          <div class="group">
-            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div class="relative mx-auto w-12 h-12 mb-4">
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
-                  <span class="text-xl font-bold text-purple-600 dark:text-purple-400">^</span>
+            <div class="group">
+              <div class="flex flex-col items-center gap-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <div class="relative w-12 h-12">
+                  <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                  <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-purple-600 dark:text-purple-400">^</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Exponents</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Power operations with proper precedence</p>
                 </div>
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Exponents</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Power operations with proper precedence</p>
             </div>
-          </div>
 
-          <div class="group">
-            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div class="relative mx-auto w-12 h-12 mb-4">
-                <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
-                  <span class="text-lg font-bold text-green-600 dark:text-green-400">RPN</span>
+            <div class="group">
+              <div class="flex flex-col items-center gap-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <div class="relative w-12 h-12">
+                  <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                  <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center">
+                    <span class="text-lg font-bold text-green-600 dark:text-green-400">RPN</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center gap-2 text-center">
+                  <h3 class="font-bold text-gray-900 dark:text-white">Algorithm</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Uses shunting-yard algorithm for accuracy</p>
                 </div>
               </div>
-              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Algorithm</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-300">Uses shunting-yard algorithm for accuracy</p>
             </div>
           </div>
         </div>
