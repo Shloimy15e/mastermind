@@ -1,61 +1,101 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-    <div class="container mx-auto px-4 py-12">
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 dark:from-slate-900 dark:via-gray-900 dark:to-slate-800 relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-500/8 via-indigo-500/8 to-purple-500/8"></div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute inset-0">
+        <div class="absolute top-[15%] left-[10%] w-20 h-20 bg-gradient-to-br from-blue-400/15 to-indigo-600/15 rounded-2xl opacity-40 animate-float transform rotate-12"></div>
+        <div class="absolute top-[30%] right-[12%] w-16 h-16 bg-gradient-to-br from-indigo-400/15 to-purple-600/15 rounded-full opacity-30 animate-float-delay"></div>
+        <div class="absolute bottom-[25%] left-[20%] w-24 h-24 bg-gradient-to-br from-purple-400/15 to-pink-600/15 rounded-xl opacity-25 animate-float"></div>
+      </div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-6 py-16 sm:px-8 lg:px-12">
       <!-- Header Section -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          About Gaming Hub
+      <div class="text-center mb-20">
+        <div class="mb-8">
+          <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg mb-8">
+            <div class="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse mr-2.5"></div>
+            <span class="text-xs font-medium text-gray-700 dark:text-gray-300 tracking-wide">ABOUT PROJECT SHOWCASE</span>
+          </div>
+        </div>
+        
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight mb-8">
+          <span class="block bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 dark:from-white dark:via-blue-200 dark:to-indigo-200 bg-clip-text text-transparent">
+            About Our
+          </span>
+          <span class="block bg-gradient-to-r from-indigo-800 via-purple-800 to-blue-900 dark:from-indigo-200 dark:via-purple-200 dark:to-blue-200 bg-clip-text text-transparent">
+            Platform
+          </span>
         </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          A collection of interactive games and tools built with modern web technologies. 
-          Designed to challenge your mind and provide useful utilities in an elegant interface.
-        </p>
+        
+        <div class="max-w-3xl mx-auto">
+          <p class="text-xl sm:text-2xl leading-[1.6] font-light text-gray-600 dark:text-gray-300">
+            A collection of <span class="font-semibold text-blue-600 dark:text-blue-400">interactive applications</span> and 
+            <span class="font-semibold text-indigo-600 dark:text-indigo-400">problem-solving tools</span> 
+            built with modern web technologies.
+          </p>
+        </div>
       </div>
 
       <!-- Applications Section -->
-      <div class="max-w-4xl mx-auto mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Applications</h2>
+      <div class="max-w-6xl mx-auto mb-24">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">Featured Applications</h2>
         
-        <div class="space-y-8">
+        <div class="grid lg:grid-cols-2 gap-8">
           <!-- Mastermind Game -->
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-            <div class="flex items-start space-x-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0">
-                <IconPuzzle class="w-8 h-8 text-white" />
+          <div class="group">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div class="relative h-32 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                  <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <IconPuzzle class="w-12 h-12 text-white opacity-80" />
+                </div>
               </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mastermind Game</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
+              
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Mastermind Game</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                   A digital implementation of the classic Mastermind board game. Challenge your deductive reasoning 
-                  by trying to guess the secret color combination within 10 attempts. Each guess provides valuable 
-                  feedback to help you narrow down the solution.
+                  by trying to guess the secret color combination within 10 attempts.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Logic Puzzle</span>
-                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Deductive Reasoning</span>
-                  <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Color Recognition</span>
+                  <span class="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Logic Puzzle</span>
+                  <span class="px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">Deductive Reasoning</span>
+                  <span class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Interactive</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Math Parser Calculator -->
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-            <div class="flex items-start space-x-6">
-              <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                <IconCalculator class="w-8 h-8 text-white" />
+          <div class="group">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div class="relative h-32 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600 overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                  <div class="absolute inset-0" style="background-image: linear-gradient(45deg, transparent 35%, white 35%, white 65%, transparent 65%), linear-gradient(-45deg, transparent 35%, white 35%, white 65%, transparent 65%); background-size: 16px 16px;"></div>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <IconCalculator class="w-12 h-12 text-white opacity-80" />
+                </div>
               </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Math Parser Calculator</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                  An advanced mathematical expression parser and calculator that supports complex equations with 
-                  parentheses, multiple operators, and proper order of operations. Built with custom parsing algorithms 
-                  for accurate and reliable calculations.
+              
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Math Parser Calculator</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  An advanced mathematical expression parser that supports complex equations with 
+                  parentheses, multiple operators, and proper order of operations.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Mathematical Parser</span>
-                  <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Expression Evaluation</span>
-                  <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Algorithm Implementation</span>
+                  <span class="px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">Parser</span>
+                  <span class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Algorithms</span>
+                  <span class="px-3 py-1.5 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">Real-time</span>
                 </div>
               </div>
             </div>
@@ -64,113 +104,159 @@
       </div>
 
       <!-- Technology Stack -->
-      <div class="max-w-4xl mx-auto mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Built With</h2>
+      <div class="max-w-6xl mx-auto mb-24">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">Built With Modern Technologies</h2>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconBrandVue class="w-6 h-6 text-green-600 dark:text-green-400" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-emerald-100 dark:border-emerald-800">
+                  <IconBrandVue class="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Vue 3</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Progressive JavaScript framework with Composition API</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Vue 3</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Progressive JavaScript framework with Composition API</p>
           </div>
           
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconBrandTypescript class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-blue-100 dark:border-blue-800">
+                  <IconBrandTypescript class="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">TypeScript</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Type-safe JavaScript for better development experience</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">TypeScript</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Type-safe JavaScript for better development experience</p>
           </div>
           
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconBrandTailwind class="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-cyan-100 dark:border-cyan-800">
+                  <IconBrandTailwind class="w-8 h-8 text-cyan-600 dark:text-cyan-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Tailwind CSS</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Utility-first CSS framework for rapid UI development</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Tailwind CSS</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Utility-first CSS framework for rapid UI development</p>
           </div>
           
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconComponents class="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-purple-100 dark:border-purple-800">
+                  <IconComponents class="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Headless UI</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Unstyled, accessible UI components</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Headless UI</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Unstyled, accessible UI components</p>
           </div>
           
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconBrandVite class="w-6 h-6 text-orange-600 dark:text-orange-400" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-orange-100 dark:border-orange-800">
+                  <IconBrandVite class="w-8 h-8 text-orange-600 dark:text-orange-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Vite</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Next generation frontend build tool</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Vite</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Next generation frontend build tool</p>
           </div>
           
-          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <IconIcons class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+          <div class="group">
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-6 text-center border border-gray-200/40 dark:border-gray-700/40 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+              <div class="relative mx-auto w-16 h-16 mb-6">
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-500 to-slate-500 rounded-xl rotate-2 group-hover:rotate-6 transition-transform duration-300"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-xl w-full h-full flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                  <IconIcons class="w-8 h-8 text-gray-600 dark:text-gray-400" />
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">Tabler Icons</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Beautiful SVG icons for modern interfaces</p>
             </div>
-            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Tabler Icons</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Beautiful SVG icons for modern interfaces</p>
           </div>
         </div>
       </div>
 
       <!-- Features -->
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Key Features</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">Key Features</h2>
         
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-4">
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Responsive Design</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">Optimized for all screen sizes and devices</p>
+          <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-8 border border-gray-200/40 dark:border-gray-700/40 shadow-md">
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Responsive Design</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Optimized for all screen sizes and devices</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Dark Mode Support</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">Beautiful interface in both light and dark themes</p>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Dark Mode Support</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Beautiful interface in both light and dark themes</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Fast Performance</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">Built with modern tools for optimal speed</p>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Fast Performance</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Built with modern tools for optimal speed</p>
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="space-y-4">
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Type Safety</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">TypeScript ensures reliable code quality</p>
+          <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl p-8 border border-gray-200/40 dark:border-gray-700/40 shadow-md">
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Type Safety</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">TypeScript ensures reliable code quality</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Accessible UI</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">Built with accessibility best practices</p>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Accessible UI</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Built with accessibility best practices</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <IconCheck class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-              <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">Smooth Animations</h4>
-                <p class="text-sm text-gray-600 dark:text-gray-300">Delightful transitions and hover effects</p>
+              
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <IconCheck class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 dark:text-white mb-1">Smooth Animations</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Delightful transitions and hover effects</p>
+                </div>
               </div>
             </div>
           </div>
@@ -195,5 +281,27 @@ import {
 </script>
 
 <style scoped>
-/* Add any additional custom styles if needed */
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(12deg); }
+  50% { transform: translateY(-6px) rotate(12deg); }
+}
+
+@keyframes float-delay {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float-delay 4.2s ease-in-out infinite;
+}
+
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 </style>

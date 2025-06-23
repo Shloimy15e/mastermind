@@ -28,7 +28,7 @@ import { IconHome, IconPuzzle, IconCalculator, IconInfoCircle } from '@tabler/ic
           </div>
           
           <!-- Enhanced Navigation Buttons -->
-          <nav class="flex items-center space-x-3">
+          <nav class="flex items-center space-x-2">
             
             <RouterLink 
               to="/" 
@@ -91,9 +91,9 @@ import { IconHome, IconPuzzle, IconCalculator, IconInfoCircle } from '@tabler/ic
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 1.25rem;
-  border-radius: 1rem;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.875rem;
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -103,6 +103,8 @@ import { IconHome, IconPuzzle, IconCalculator, IconInfoCircle } from '@tabler/ic
   box-shadow: 0 1px 2px 0 rgba(0 0 0 / 0.05);
   backdrop-filter: blur(8px);
   transform: translateY(0);
+  min-width: fit-content;
+  white-space: nowrap;
 }
 
 .dark .nav-button {
